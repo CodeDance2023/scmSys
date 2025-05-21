@@ -1,17 +1,32 @@
 package edu.gduf.entity;
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
+import java.util.Objects;
+
 // 用户
 public class User {
     // 等同于学号
     private String account;
     private String password;
     private String type;    //用户类型
-    private Card card;
+    private String cardId;  //消费的卡的id
+
+    public User(String account, String password, String type, String cardId) {
+        this.account = account;
+        this.password = password;
+        this.type = type;
+        this.cardId = cardId;
+    }
 
     public User(String account, String password, String type) {
         this.account = account;
         this.password = password;
         this.type = type;
+    }
+
+    public User(String account) {
+        this.account = account;
     }
 
     public String getAccount() {
@@ -38,12 +53,12 @@ public class User {
         this.type = type;
     }
 
-    public Card getCard() {
-        return card;
+    public String getCardId() {
+        return cardId;
     }
 
-    public void setCard(Card card) {
-        this.card = card;
+    public void setCardId(String card) {
+        this.cardId = card;
     }
 
     @Override
@@ -52,7 +67,14 @@ public class User {
                 "account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 ", type='" + type + '\'' +
-                ", card=" + card +
+                ", cardId=" + cardId +
                 '}';
+    }
+
+    //重写equals()方法，再利用List.remove()的时候，根据账号比较
+    @Override
+    public boolean equals(Object obj) {
+        User user = (User)obj;
+        return (this.getAccount().equals(user.getAccount()));
     }
 }
