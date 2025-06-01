@@ -20,7 +20,7 @@ public class CardFileHandler {
         String line;
         while ((line = cardBf.readLine()) != null) {
             String[] s = line.split(" ");
-            Card card = new Card(s[0],Double.parseDouble(s[1]));
+            Card card = new Card(s[0],Double.parseDouble(s[1]),Integer.parseInt(s[2]));
             cards.add(card);
         }
         return cards;
@@ -40,7 +40,8 @@ public class CardFileHandler {
         BufferedWriter bw = new BufferedWriter(new FileWriter(path,true));
         String cardId = card.getCardId();
         Double balance = card.getBalance();
-        String content = cardId + " " + balance;
+        Integer status = card.getStatus();
+        String content = cardId + " " + balance + " " + status;
         bw.write(content);
         bw.newLine();
         bw.close();
@@ -59,7 +60,8 @@ public class CardFileHandler {
         BufferedWriter bw = new BufferedWriter(new FileWriter(path));
         String cardId = card.getCardId();
         Double balance = card.getBalance();
-        String content = cardId + " " + balance;
+        Integer status = card.getStatus();
+        String content = cardId + " " + balance + " " + status;
         bw.write(content);
         bw.newLine();
         bw.close();

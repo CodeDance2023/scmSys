@@ -9,15 +9,19 @@ public class Card {
     private String cardId;
     // 余额
     private Double balance;
+    //状态
+    private Integer status;
 
     public Card(String cardId) {
         this.cardId = cardId;
         this.balance = 0.0;
+        this.status = 1;
     }
 
-    public Card(String cardId, Double balance) {
+    public Card(String cardId, Double balance,Integer status) {
         this.cardId = cardId;
         this.balance = balance;
+        this.status = status;
     }
 
     public String getCardId() {
@@ -36,11 +40,21 @@ public class Card {
         this.balance = balance;
     }
 
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
                 "cardId='" + cardId + '\'' +
                 ", balance=" + balance +
+                ", status=" + status +
                 '}';
     }
 
