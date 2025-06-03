@@ -38,7 +38,7 @@ public class TransactionDatas {
     //删除一条交易
     public boolean deleteTransaction(Transaction transaction) throws IOException {
         boolean hasTransaction = TransactionFileHandler.hasTransaction(transaction);
-        //如果交易存在
+        //如果交易不存在
         if (!hasTransaction) {
             return false;
         }
@@ -111,5 +111,5 @@ public class TransactionDatas {
         }
 
     }
-
 }
+

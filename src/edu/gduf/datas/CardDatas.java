@@ -34,6 +34,9 @@ public class CardDatas {
 
     //增加一张卡
     public boolean addCard(Card card) throws IOException {
+        if (CardFileHandler.hasCard(card)) {
+            return false;
+        }
       return CardFileHandler.writeAppend(card);
     }
 
@@ -65,6 +68,7 @@ public class CardDatas {
 
     public boolean updateCard(Card card) throws IOException {
         boolean ret = CardFileHandler.hasCard(card);
+        //如果卡不能存在，不允许修改
         if (!ret) {
             return false;
         }

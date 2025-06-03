@@ -32,10 +32,6 @@ public class CardFileHandler {
     //写出数据--追加模式
     //返回值：是否写出成功
     public static boolean writeAppend(Card card) throws IOException {
-        boolean hasCard = hasCard(card);
-        //如果卡已经存在
-        if (hasCard) return false;
-
         File path = new File ("resource/cards.txt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(path,true));
         String cardId = card.getCardId();
@@ -52,9 +48,6 @@ public class CardFileHandler {
     //写出数据--覆盖模式
     //返回值：是否写出成功
     public static boolean writeNotAppend(Card card) throws IOException {
-        boolean hasCard = hasCard(card);
-        //如果卡已经存在
-        if (hasCard) return false;
 
         File path = new File ("resource/cards.txt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(path));

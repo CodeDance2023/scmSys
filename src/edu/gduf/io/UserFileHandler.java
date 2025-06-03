@@ -32,9 +32,6 @@ public class UserFileHandler {
     //写出数据--追加模式
     //返回值：是否写出成功
     public static boolean writeAppend(User user) throws IOException {
-        boolean hasUser = hasUser(user);
-        //如果用户已经存在
-        if (hasUser) return false;
         File path = new File ("resource/users.txt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(path,true));  //打开追加模式开关
         String account = user.getAccount();
@@ -51,9 +48,6 @@ public class UserFileHandler {
     //写出数据--覆盖模式
     //返回值：是否写出成功
     public static boolean writeNotAppend(User user) throws IOException {
-        boolean hasUser = hasUser(user);
-        //如果用户已经存在
-        if (hasUser) return false;
         File path = new File ("resource/users.txt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(path));
         String account = user.getAccount();
